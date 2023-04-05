@@ -1,58 +1,25 @@
-﻿// Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-// 14212 -> нет
-// 12821 -> да
-// 23432 -> да
-
-int number = ReadInt("Введите число"); // Программа работает с любой длинной числа, определяет если введена 1 цифра, работает с отрицательными числами.
-if (Validate(number))
-{
-    if (number == Revers(number))
-    {
-        Console.WriteLine("Палиндром");
-    }
-    else
-    {
-        Console.WriteLine("Не палиндром");
-    }
-}
+﻿// Задача 21
+// Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+// A (3,6,8); B (2,1,-7), -> 15.84
+// A (7,-5, 0); B (1,-1,9) -> 11.53
 
 int ReadInt(string message)
 {
     Console.WriteLine ($"{message} >");
     return Convert.ToInt32(Console.ReadLine());
 }
+int Ax = ReadInt("Введите A(X)");
+int Ay = ReadInt("Введите A(Y)");
+int Az = ReadInt("Введите A(Z)");
 
-int Revers(int digit)
-{
-    int result = 0;
-    if (number > 0)
-    {
-        while (number > 0) 
-        {
-            result *= 10;
-            result += number % 10;
-            number /= 10;
-        }
-        return result;
-        }
-    else
-    {
-        while (number < 0) 
-        {
-            result *= 10;
-            result += number % 10;
-            number /= 10;
-        }
-        return result;
-    }
-}
+int Bx = ReadInt("Введите B(X)");
+int By = ReadInt("Введите B(Y)");
+int Bz = ReadInt("Введите B(Y)");
 
-bool Validate(int number)
-{
-    if (number < 10 && number > -10)
-    {
-        Console.WriteLine("Одной цифры мало");
-        return false;
-    }
-    return true;
-}
+int A = (Ax - Bx);
+int B = (Ay - By);
+int C = (Az - Bz);
+
+double W = Math.Sqrt(Math.Pow(A,2) + Math.Pow(B,2) + Math.Pow(C,2) );
+
+Console.WriteLine($"Расстояние между точками А({Ax},{Ay},{Az}) и B({Bx},{By},{Bz}) равно {W:f2}");
